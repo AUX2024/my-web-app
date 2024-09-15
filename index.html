@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUX超速交易</title>
+    <!-- 修改引用文件名，确保与实际文件匹配 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 动画背景容器 -->
+    <div class="animated-background"></div>
+
+    <!-- 登录页面 -->
+    <div id="loginPage" class="centered-container">
+        <h1 class="title">AUX 超速交易</h1>
+        <div class="login-container">
+            <input type="text" id="username" placeholder="用户名" class="input-field">
+            <input type="password" id="password" placeholder="密码" class="input-field">
+            <button class="button gold-button" onclick="login()">登录</button>
+            <p class="switch-text" onclick="showRegister()">没有账户？<button class="register-button gold-button">注册</button></p>
+        </div>
+    </div>
+
+    <!-- 注册页面 -->
+    <div id="registerPage" class="centered-container" style="display:none;">
+        <h1 class="title">AUX 超速交易</h1>
+        <div class="register-container">
+            <input type="text" id="newUsername" placeholder="用户名" class="input-field">
+            <input type="password" id="newPassword" placeholder="密码" class="input-field">
+            <input type="password" id="confirmPassword" placeholder="确认密码" class="input-field">
+            <button class="button gold-button" onclick="register()">注册</button>
+            <p class="switch-text" onclick="showLogin()">已有账户？<button class="register-button gold-button">登录</button></p>
+        </div>
+    </div>
+
+    <!-- 交易界面 -->
+    <div id="tradePage" style="display:none;">
+        <button class="service-button small-green-button" onclick="openService()">实时客服</button>
+        <h1 class="title">AUX 超速交易</h1>
+        <div class="balance-container">余额: ¥0.00</div>
+        <div class="trade-options">
+            <!-- 交易选项 -->
+            <div class="trade-buttons-container">
+                <!-- 每行两个交易选项按钮 -->
+                <div class="trade-button-row">
+                    <button class="trade-button large-button gold-button" onclick="openTrade('黄金/USD')">黄金/USD</button>
+                    <button class="trade-button large-button silver-button" onclick="openTrade('白银/USD')">白银/USD</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button orange-button" onclick="openTrade('BTC/USD')">BTC/USD</button>
+                    <button class="trade-button large-button purple-button" onclick="openTrade('ETH/USD')">ETH/USD</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button blue-button" onclick="openTrade('微软/USD')">微软/USD</button>
+                    <button class="trade-button large-button red-button" onclick="openTrade('谷歌/USD')">谷歌/USD</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button green-button" onclick="openTrade('苹果/USD')">苹果/USD</button>
+                    <button class="trade-button large-button yellow-button" onclick="openTrade('英伟达/USD')">英伟达/USD</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button teal-button" onclick="openTrade('特斯拉/USD')">特斯拉/USD</button>
+                    <button class="trade-button large-button cyan-button" onclick="openTrade('台积电/USD')">台积电/USD</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button brown-button" onclick="openTrade('大通银行')">大通银行</button>
+                    <button class="trade-button large-button magenta-button" onclick="openTrade('摩根大通')">摩根大通</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button olive-button" onclick="openTrade('华美银行')">华美银行</button>
+                    <button class="trade-button large-button pink-button" onclick="openTrade('皇家银行')">皇家银行</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button lavender-button" onclick="openTrade('花旗银行')">花旗银行</button>
+                    <button class="trade-button large-button coral-button" onclick="openTrade('通用/USD')">通用/USD</button>
+                </div>
+                <div class="trade-button-row">
+                    <button class="trade-button large-button navy-button" onclick="openTrade('亚马逊/USD')">亚马逊/USD</button>
+                    <button class="trade-button large-button peach-button" onclick="openTrade('辉达/USD')">辉达/USD</button>
+                </div>
+            </div>
+        </div>
+        <div id="tradeBox" class="trade-box" style="display:none;">
+            <h2 id="tradeTitle"></h2>
+            <input type="number" id="tradeAmount" placeholder="输入金额" class="input-field">
+            <div class="button-group">
+                <button class="buy-button" onclick="trade('buy')">买入</button>
+                <button class="sell-button" onclick="trade('sell')">卖出</button>
+            </div>
+        </div>
+        <div class="bottom-buttons">
+            <button class="history-button green-button" onclick="showHistory()">历史记录</button>
+            <button class="exit-button red-button" onclick="logout()">退出账户</button>
+        </div>
+    </div>
+
+    <!-- 倒计时弹窗 -->
+    <div id="countdownModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <p id="countdownText">倒计时: 60秒</p>
+        </div>
+    </div>
+
+    <!-- 历史记录弹窗 -->
+    <div id="historyModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeHistory()">X</button>
+            <h3>交易历史记录</h3>
+            <div id="historyContent">无交易记录</div>
+        </div>
+    </div>
+
+    <!-- 修改引用文件名，确保与实际文件匹配 -->
+    <script src="script.js"></script>
+</body>
+</html>

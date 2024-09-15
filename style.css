@@ -1,0 +1,261 @@
+body {
+    background: linear-gradient(45deg, #3b0d81, #1c1b29, #0000ff); /* 紫色和蓝色渐变 */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* 背景动画15秒变换 */
+    color: #ffd700;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: 100vh; /* 视口高度 */
+    overflow-y: hidden; /* 禁用垂直滚动条，登录页面不需要滚动 */
+    overflow-x: hidden; /* 禁用水平滚动条 */
+    display: flex;
+    justify-content: center; /* 水平居中对齐 */
+    align-items: center; /* 垂直居中对齐 */
+    position: relative; /* 为固定定位的元素提供参考 */
+    padding-top: 20px; /* 增加顶部空间，确保按钮不挡住标题 */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.centered-container {
+    text-align: center;
+    padding: 20px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 215, 0.5, 0.5);
+    max-width: 400px;
+    width: 90%;
+    position: absolute; /* 使用绝对定位来确保内容居中 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 垂直和水平居中显示 */
+}
+
+.title {
+    color: #ffd700;
+    font-size: 32px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.service-button {
+    background-color: #32cd32; /* 绿色 */
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    position: fixed; /* 固定位置，不随页面滚动 */
+    top: 20px; /* 更靠近顶部 */
+    right: 10px; /* 靠近右侧 */
+    z-index: 10; /* 确保按钮显示在最前面 */
+}
+
+.input-field {
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 80%; /* 确保输入框占满可用宽度 */
+    max-width: 250px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+    border: 1px solid #ffd700;
+    transition: background-color 0.3s;
+}
+
+.input-field:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 10px auto; /* 中间对齐按钮 */
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #ffd700; /* 按钮的颜色 */
+    color: #1c1b29;
+    display: block; /* 将按钮设置为块级元素，使其与输入框对齐 */
+    width: 80%; /* 确保按钮和输入框具有相同的宽度 */
+    max-width: 250px;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.buy-button, .sell-button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 20px; /* 保持圆角 */
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    width: 48%; /* 按钮宽度 */
+    display: inline-block; /* 使按钮在同一行 */
+    text-align: center;
+}
+
+.buy-button {
+    background-color: #28a745; /* 绿色背景 */
+    color: #fff; /* 白色文字 */
+}
+
+.sell-button {
+    background-color: #dc3545; /* 红色背景 */
+    color: #fff; /* 白色文字 */
+}
+
+#tradePage {
+    overflow-y: auto; /* 启用登录后的垂直滚动 */
+    overflow-x: hidden; /* 禁用水平滚动 */
+    height: 100vh; /* 设置为视口高度，确保内容能完全滚动 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.trade-button {
+    font-size: 15px; 
+    letter-spacing: -0.5px; 
+    padding: 10px 8px; 
+    margin: 5px 2%;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    width: 46%; 
+    white-space: nowrap;
+}
+
+.trade-button-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    flex-wrap: wrap; 
+}
+
+.gold-button { background-color: #ffd700; color: #1c1b29; }
+.silver-button { background-color: #c0c0c0; color: #000; }
+.orange-button { background-color: #ff7f50; color: #fff; }
+.purple-button { background-color: #8a2be2; color: #fff; }
+.blue-button { background-color: #4682b4; color: #fff; }
+.red-button { background-color: #ff6347; color: #fff; }
+.green-button { background-color: #32cd32; color: #fff; }
+.yellow-button { background-color: #ffd700; color: #000; }
+.teal-button { background-color: #20b2aa; color: #fff; }
+.cyan-button { background-color: #00ffff; color: #000; }
+.brown-button { background-color: #a52a2a; color: #fff; }
+.magenta-button { background-color: #ff00ff; color: #fff; }
+.olive-button { background-color: #808000; color: #fff; }
+.pink-button { background-color: #ffc0cb; color: #000; }
+.lavender-button { background-color: #e6e6fa; color: #000; }
+.coral-button { background-color: #ff7f50; color: #fff; }
+.navy-button { background-color: #000080; color: #fff; }
+.peach-button { background-color: #ffdab9; color: #000; }
+.salmon-button { background-color: #fa8072; color: #fff; }
+
+.trade-box {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0px; 
+    width: 85%; 
+    max-width: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+    position: relative;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px;
+}
+
+.history-button, .exit-button {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.modal-content {
+    color: #ffd700;
+    text-align: center;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    color: #ffd700;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#historyContent {
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 480px) {
+    .trade-button {
+        width: 48%;
+        margin: 5px 1%;
+    }
+
+    .trade-box {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .service-button {
+        top: 10px; 
+        right: 10px; /* 确保按钮在右上角 */
+    }
+}
