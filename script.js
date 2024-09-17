@@ -30,7 +30,7 @@ function register() {
 
     if (newUsername && newPassword && confirmPassword && newPassword === confirmPassword) {
         // 调用后端API注册用户
-        fetch('http://localhost:3000/register', {
+        fetch('https://seven-clouds-clap.loca.lt/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ function addBalance() {
     const username = document.getElementById('username').value;
     const amount = parseFloat(document.getElementById('addAmount').value);
 
-    fetch('http://localhost:3000/addBalance', {
+    fetch('https://seven-clouds-clap.loca.lt/addBalance', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
