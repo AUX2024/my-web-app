@@ -29,11 +29,20 @@ function register() {
     let confirmPassword = document.getElementById('confirmPassword').value;
 
     if (newUsername && newPassword && confirmPassword && newPassword === confirmPassword) {
-        let users = JSON.parse(localStorage.getItem('users')) || {};
-        users[newUsername] = { username: newUsername, password: newPassword, balance: 0, trades: [] };
-        localStorage.setItem('users', JSON.stringify(users));
-        alert('注册成功');
-        showLogin();
+        // 调用后端API注册用户
+        fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: newUsername, password: newPassword })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            if (data.message === '注册成功') showLogin();
+        })
+        .catch(error => console.error('Error:', error));
     } else {
         alert('请确保所有字段已填写且密码匹配');
     }
@@ -131,6 +140,29 @@ function updateBalance(username) {
     let users = JSON.parse(localStorage.getItem('users')) || {};
     let user = users[username];
     document.querySelector('.balance-container').innerText = `余额: ＄${user.balance.toFixed(2)}`;
+}
+
+function addBalance() {
+    const username = document.getElementById('username').value;
+    const amount = parseFloat(document.getElementById('addAmount').value);
+
+    fetch('http://localhost:3000/addBalance', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, amount })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === '余额增加成功') {
+            alert(`余额增加成功，当前余额：${data.balance}`);
+            updateBalance(username);
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 function logout() {
