@@ -130,7 +130,7 @@ function closeHistory() {
 function updateBalance(username) {
     let users = JSON.parse(localStorage.getItem('users')) || {};
     let user = users[username];
-    document.querySelector('.balance-container').innerText = `余额: ¥${user.balance.toFixed(2)}`;
+    document.querySelector('.balance-container').innerText = `余额: ＄${user.balance.toFixed(2)}`;
 }
 
 function logout() {
